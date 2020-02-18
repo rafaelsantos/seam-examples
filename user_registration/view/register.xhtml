@@ -1,0 +1,51 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+    <ui:define name="body">
+
+        <h1>
+            <h:outputLabel value="Register new user"/>
+        </h1>
+        <rich:panel>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:graphicImage value="/img/seamlogo.png" alt="Seam logo"/>
+                    <s:div styleClass="info">
+                        <h:panelGrid columns="1">
+                            <s:decorate template="layout/edit.xhtml">
+                                <ui:define name="label">
+                                    <h:outputLabel value="Username:"/>
+                                </ui:define>
+                                <h:inputText value="#{user.username}" required="true"/>
+                            </s:decorate>
+
+                            <s:decorate template="layout/edit.xhtml">
+                                <ui:define name="label">
+                                    <h:outputLabel value="Real name:"/>
+                                </ui:define>
+                                <h:inputText value="#{user.name}" required="true"/>
+                            </s:decorate>
+
+                            <s:decorate template="layout/edit.xhtml">
+                                <ui:define name="label">
+                                    <h:outputLabel value="Password:"/>
+                                </ui:define>
+                                <h:inputSecret value="#{user.password}" required="true"/>
+                            </s:decorate>
+
+                        </h:panelGrid>
+                        <h:commandButton value="Register" action="#{register.register}"/>
+                    </s:div>
+                </h:panelGrid>
+            </h:form>
+        </rich:panel>
+
+    </ui:define>
+</ui:composition>
