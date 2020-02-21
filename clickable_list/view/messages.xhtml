@@ -1,0 +1,62 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+    <ui:define name="body">
+
+        <h1>List of Messages</h1>
+        <rich:panel>
+            <h:panelGrid columns="2">
+                <h:graphicImage value="/img/seamlogo.png" alt="Seam logo"/>
+                <s:div styleClass="info">
+                    <h:form>
+                        <h:outputText value="No messages to display" rendered="#{messageList.rowCount == 0}"/>
+                        <rich:dataTable var="msg" value="#{messageList}" rendered="#{messageList.rowCount > 0}">
+                            <rich:column>
+                                <f:facet name="header">
+                                   <h:outputText value="Read"/>
+                                </f:facet>
+
+                                <h:selectBooleanCheckbox value="#{msg.finished}" disabled="true"/>
+                            </rich:column>
+
+                            <rich:column>
+                               <f:facet name="header">
+                                  <h:outputText value="Title"/>
+                               </f:facet>
+                               <h:commandLink value="#{msg.title}" action="#{messageManager.select}"/>
+                            </rich:column>
+
+                            <rich:column>
+                               <f:facet name="header">
+                                  <h:outputText value="Date/Time"/>
+                               </f:facet>
+
+                               <h:outputText value="#{msg.period}">
+                                  <f:convertDateTime type="both" dateStyle="medium" timeStyle="short"/>
+                               </h:outputText>
+                            </rich:column>
+
+                            <rich:column>
+                                <f:facet name="header">
+                                  <h:outputText value="Action"/>
+                               </f:facet>
+                               <h:commandButton value="Delete" action="#{messageManager.delete}"/>
+                            </rich:column>
+                        </rich:dataTable>
+
+                        <h3><h:outputText value="#{message.title}"/></h3>
+                        <div><h:outputText value="#{message.text}"/></div>
+                    </h:form>
+                </s:div>
+            </h:panelGrid>
+        </rich:panel>
+
+    </ui:define>
+</ui:composition>
