@@ -1,0 +1,16 @@
+#Wed Aug 06 19:35:32 BST 2008
+action.package=com.github.rafaelsantos.todo.action
+action.sources=/todo/src/hot
+eclipse.preferences.version=1
+model.package=com.github.rafaelsantos.todo.model
+model.sources=/todo/src/main
+seam.ejb.project=todo
+seam.project.connection.profile=
+seam.project.deployment.type=ear
+seam.project.settings.version=1.1
+seam.project.web.root.folder=/todo/view
+seam.runtime.name=
+seam.test.creating=true
+seam.test.project=todo
+test.package=com.github.rafaelsantos.todo.test
+test.sources=/todo/src/test
